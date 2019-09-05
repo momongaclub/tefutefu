@@ -3,6 +3,8 @@ import sys
 import codecs
 import argparse
 
+YOMI = 10
+
 
 def load_dictionary(fname):
     # csv形式,表層形\t品詞,品詞細分類1,品詞細分類2,品詞細分類3,活用型,活用形,原形,読み,発音
@@ -19,16 +21,18 @@ def load_dictionary(fname):
     return dictionary
 
 
-def search_word(dictionary, word):
-    print(dictionary[word])
-    return 0
+def search_word_yomi(dictionary, word):
+    info = dictionary[word]
+    yomi = info[YOMI]
+    return yomi
 
 
 def main():
     fname = sys.argv[1]
     word = str(sys.argv[2])
     dictionary = load_dictionary(fname)
-    search_word(dictionary, word)
+    yomi = search_word_yomi(dictionary, word)
+    print(yomi)
     return 0
 
 
