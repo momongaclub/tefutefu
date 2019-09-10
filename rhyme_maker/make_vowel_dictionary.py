@@ -1,34 +1,32 @@
+import argparse
+import pykakasi
+
 import Dictionary
-import sys
+import Corpus
 
+SPACE = ' '
 
-def make_vowel_dictionary(vowel_dictionary, dictionary):
-    with open(vowel_dictionary, 'w', encoding = 'euc_jp') as fp:
-        for word, info in dictionary.dictionary.items():
-            dictionary.vowel = ''
-            dictionary.word = word
-            dictionary.search_word_yomi()
-            dictionary.word2vowel()
-            info.insert(0, dictionary.word)
-            info.append(dictionary.vowel)
-            line = ""
-            for index in info:
-                line += index + ','
-            line = line.rstrip(',')
-            fp.write(line)
+def parser():
+    parser = argparse.ArgumentParser(description='Process corpus.')
+    parser.add_argument('wiki_corpus', help='corpus_data')
+    parser.add_argument('vowel_dictionary', help='output_dictionary')
+    args = parser.parse_args()
+    return args
+
+def make_vowel_dictionary(vowel_dictionary, corpus):
+    with open(vowel_dictionary, 'w', encoding='utf-8') as fp:
+        for word, vowel in corpus.word2vowel.items():
+            fp.write(word + SPACE + vowel)
             fp.write('\n')
-        # 新たなcsvファイルをfnameで読み込み
-        # 辞書の単語と母音を回す
-        # キーと値を同時に出して,リストで連結する. 連結したリストの最後尾に母音を追加する
-        # 既存の辞書に追加する
-
 
 def main():
-    ipa_dicitionary = sys.argv[1]
-    vowel_dictionary = sys.argv[2]
-    dictionary = Dictionary.Dictionary()
-    dictionary.load_dictionary(ipa_dicitionary)
-    make_vowel_dictionary(vowel_dictionary, dictionary)
+    args = parser()
+    wiki_corpus = Corpus.Corpus()
+    wiki_corpus.load_corpus(args.wiki_corpus)
+    wiki_corpus.convert_vowel(wiki_corpus)
+    make_vowel_dictionary(args.vowel_dictionary, wiki_corpus)
+
+
 
 if __name__ == '__main__':
     main()
