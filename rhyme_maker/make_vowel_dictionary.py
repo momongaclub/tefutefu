@@ -2,9 +2,9 @@ import argparse
 import pykakasi
 
 import Dictionary
-import Corpus
 
 SPACE = ' '
+
 
 def parser():
     parser = argparse.ArgumentParser(description='Process corpus.')
@@ -21,11 +21,10 @@ def make_vowel_dictionary(vowel_dictionary, corpus):
 
 def main():
     args = parser()
-    wiki_corpus = Corpus.Corpus()
-    wiki_corpus.load_corpus(args.wiki_corpus)
-    wiki_corpus.convert_vowel(wiki_corpus)
-    make_vowel_dictionary(args.vowel_dictionary, wiki_corpus)
-
+    dictionary = Dictionary.Dictionary()
+    dictionary.load_sentences(args.wiki_corpus)
+    dictionary.extract_words()
+    dictionary.make_vowel_dict(args.vowel_dictionary)
 
 
 if __name__ == '__main__':
