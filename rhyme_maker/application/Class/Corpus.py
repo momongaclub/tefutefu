@@ -22,12 +22,14 @@ class Corpus():
         else:
             print('error')
 
+    def save_pkl(self, fname):
+        corpus.word2vec.save(fname+'pkl', pickle_protocol=1)
+
 
 def main():
     args = parser()
     corpus = Corpus()
     corpus.load_corpus(args.corpus)
-    corpus.word2vec.save('data.pkl', pickle_protocol=1)
 
 
 if __name__ == '__main__':
