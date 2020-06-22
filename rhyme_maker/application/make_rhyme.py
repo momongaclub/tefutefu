@@ -13,6 +13,7 @@ def parser():
 
 
 def search_rhyme(query_word, corpus, vowel):
+    rhymes = ''
     query_vowel = vowel.word2vowel(query_word)
     print('query_word:', query_word, 'query_vowel:', query_vowel)
     # TODO word が [word]形式とword形式になっているので変換処理を書く
@@ -20,6 +21,8 @@ def search_rhyme(query_word, corpus, vowel):
         word_vowel = vowel.word2vowel(word)
         if query_vowel == word_vowel:
             print('word:', word, 'vowel:', word_vowel)
+            rhymes = rhymes + word + '[' + word_vowel + ']' + ','
+    return rhymes
 
 
 def get_query_word(query_word):
@@ -28,13 +31,13 @@ def get_query_word(query_word):
 
 def main(request):
     args = parser()
-    query_word = request.GET.get('input_data')
+    query_word = request.POST['input_text']
     vowel = Vowel.Vowel()
     corpus = Corpus.Corpus()
-    corpus.load_corpus('./data/tohoku_wiki_embeddings/\
-                        entity_vector.model.sample',
+    corpus.load_corpus('/home/mibayashi/programs/tefutefu/rhyme_maker/application/data/tohoku_wiki_embeddings/entity_vector.model.sample',
                        f_type='txt')
-    search_rhyme(query_word, corpus, vowel)
+    rhymes = search_rhyme(query_word, corpus, vowel)
+    return rhymes
 
 
 if __name__ == '__main__':
