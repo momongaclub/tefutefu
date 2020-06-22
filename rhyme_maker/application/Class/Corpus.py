@@ -17,9 +17,11 @@ class Corpus():
     def load_corpus(self, fname, f_type='pkl'):
         if f_type == 'pkl':
             self.word2vec = KeyedVectors.load(fname)
-        elif f_type == 'binary':
+        elif f_type == 'bin':
             self.word2vec = KeyedVectors.load_word2vec_format(fname,
                                                               binary=True)
+        elif f_type == 'txt':
+            self.word2vec = KeyedVectors.load_word2vec_format(fname)
         else:
             print('error')
 
