@@ -11,7 +11,6 @@ def parser():
     return args
 
 
-
 def main():
     args = parser()
     corpus = Corpus.Corpus()
