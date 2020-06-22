@@ -23,7 +23,7 @@ class Corpus():
             print('error')
 
     def save_pkl(self, fname):
-        corpus.word2vec.save(fname+'pkl', pickle_protocol=1)
+        self.word2vec.save(fname+'pkl', pickle_protocol=1)
 
 
 def main():
