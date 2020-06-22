@@ -1,0 +1,36 @@
+{% load static %}
+<html>
+<head>
+</head>
+<body>
+  {% block extrahead %}
+  <link href="{% static 'test.css' %}" rel="stylesheet">
+  {% endblock %}
+
+  <div class='a1'>
+    <h1>押韻生成(10000/1015474)</h1>
+  </div>
+
+  <div class='b1'>
+    <p>
+      「{{query_word}}」で踏んでいるワードは：<br>
+      {{ text }}<br>
+      <!-- TODO forで回せるようにする -->
+    </p>
+  </div>
+
+  <div class='c1'>
+    <form action="make_rhymes" method="POST" >
+      {% csrf_token %}
+      <h3>踏みたいワード</h3>
+      <textarea class="form-control" id="input_text" name="input_text" rows="1" required>{{ input_text }}</textarea>
+      <button type="submit" name="submit" value="送信" style="background-color: #bcbcff" >
+        <font size="5">踏む</font>
+      </button>
+
+    </form>
+  </div>
+
+</body>
+</html>
+
