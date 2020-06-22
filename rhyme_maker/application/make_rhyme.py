@@ -11,22 +11,26 @@ def parser():
     args = parser.parse_args()
     return args
 
-def search_rhyme(quey_word, corpus, vowel):
-    query_vowel = vowel.word2vowel(quey_word)
-    print(query_vowel)
+def search_rhyme(query_word, corpus, vowel):
+    query_vowel = vowel.word2vowel(query_word)
+    print('query_word:', query_word, 'query_vowel:', query_vowel)
     # TODO word が [word]形式とword形式になっているので変換処理を書く
+    # TODO vowelが''の場合がある
     for word in corpus.word2vec.vocab:
         word_vowel = vowel.word2vowel(word)
         if query_vowel == word_vowel:
-            print(word)
+            print('word:', word, 'vowel:', word_vowel)
+
+def get_query_word(query_word):
+    return query_word
+
 
 def main():
-    query_word = '働き蟻'
     args = parser()
+    query_word = 'プール'
     vowel = Vowel.Vowel()
     corpus = Corpus.Corpus()
-    corpus.load_corpus(args.corpus)
-    #print(vars(corpus.word2vec))
+    corpus.load_corpus(args.corpus, f_type='txt')
     search_rhyme(query_word, corpus, vowel)
 
 
