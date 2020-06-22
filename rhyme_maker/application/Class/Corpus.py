@@ -18,7 +18,8 @@ class Corpus():
         if f_type == 'pkl':
             self.word2vec = KeyedVectors.load(fname)
         elif f_type == 'binary':
-            self.word2vec = KeyedVectors.load_word2vec_format(fname, binary=True)
+            self.word2vec = KeyedVectors.load_word2vec_format(fname,
+                                                              binary=True)
         else:
             print('error')
 

@@ -1,6 +1,7 @@
 import sys
 import pykakasi
 
+
 class Vowel():
 
     def __init__(self):
@@ -29,4 +30,6 @@ class Vowel():
 def main():
     kakasi = pykakasi.kakasi()
 
-main()
+
+if __name__ == '__main__':
+    main()
