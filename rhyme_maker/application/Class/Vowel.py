@@ -9,11 +9,16 @@ class Vowel():
         self.yomi = ''
 
     def word2yomi(self, word):
-        yomis = pykakasi.kakasi().convert(word)
-        yomi = ''
         # TODO  正式に決まり次第音韻表記へ変更する
-        for y in yomis:
-            yomi += y['hepburn']
+        kakasi = pykakasi.kakasi()
+        kakasi.setMode("H","a") # Hiragana to ascii, default: no conversion
+        kakasi.setMode("K","a") # Katakana to ascii, default: no conversion
+        kakasi.setMode("J","a") # Japanese to ascii, default: no conversion
+        kakasi.setMode("r","Hepburn") # default: use Hepburn Roman table
+        # kakasi.setMode("s", True) # add space, default: no separator
+        # kakasi.setMode("C", True) # capitalize, default: no capitalize
+        converter = kakasi.getConverter()
+        yomi = converter.do(word)
         return yomi
 
     def word2vowel(self, word):
@@ -28,7 +33,12 @@ class Vowel():
 
 
 def main():
-    kakasi = pykakasi.kakasi()
+    word = 'プール学校'
+    vowel = Vowel()
+    yomi = vowel.word2yomi(word)
+    print(yomi)
+
+
 
 
 if __name__ == '__main__':
