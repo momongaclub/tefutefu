@@ -1,5 +1,5 @@
-from Class import Corpus
-from Class import Vowel
+from .Class import Corpus
+from .Class import Vowel
 from pykakasi import kakasi
 import argparse
 import sys
@@ -11,28 +11,30 @@ def parser():
     args = parser.parse_args()
     return args
 
+
 def search_rhyme(query_word, corpus, vowel):
     query_vowel = vowel.word2vowel(query_word)
     print('query_word:', query_word, 'query_vowel:', query_vowel)
     # TODO word が [word]形式とword形式になっているので変換処理を書く
-    # TODO vowelが''の場合がある
     for word in corpus.word2vec.vocab:
         word_vowel = vowel.word2vowel(word)
         if query_vowel == word_vowel:
             print('word:', word, 'vowel:', word_vowel)
 
+
 def get_query_word(query_word):
     return query_word
 
 
-def main():
+def main(request):
     args = parser()
-    query_word = 'プール'
+    query_word = request.GET.get('input_data')
     vowel = Vowel.Vowel()
     corpus = Corpus.Corpus()
-    corpus.load_corpus(args.corpus, f_type='txt')
+    corpus.load_corpus('./data/tohoku_wiki_embeddings/\
+                        entity_vector.model.sample',
+                       f_type='txt')
     search_rhyme(query_word, corpus, vowel)
-
 
 
 if __name__ == '__main__':
