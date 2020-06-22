@@ -10,6 +10,7 @@ class Vowel():
 
     def word2yomi(self, word):
         # TODO  正式に決まり次第音韻表記へ変更する
+        # TODO 数値、記号が変換出来ていない
         kakasi = pykakasi.kakasi()
         kakasi.setMode("H","a") # Hiragana to ascii, default: no conversion
         kakasi.setMode("K","a") # Katakana to ascii, default: no conversion
