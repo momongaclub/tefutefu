@@ -41,3 +41,21 @@ def exercise(request):
         'text': rhymes,
     }
     return render(request, 'make_rhymes.html', context)
+
+def search_rhyme(request):
+    text = 'テストです。'
+    try:
+        input_text = request.POST['input_text']
+        print(input_text)
+        text = input_text
+    except:
+        return render(request, 'test.html')
+
+    #now = datetime.now();
+    rhymes = make_rhyme.main(request)
+    input_text = request.POST['input_text']
+    context = {
+        'query_word': input_text,
+        'text': rhymes,
+    }
+    return render(request, 'test.html', context)
