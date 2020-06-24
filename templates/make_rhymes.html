@@ -20,7 +20,7 @@
   </div>
 
   <div class='c1'>
-    <form action="make_rhymes" method="POST" >
+    <form action="make_rhyme" method="POST" >
       {% csrf_token %}
       <h3>踏みたいワード</h3>
       <textarea class="form-control" id="input_text" name="input_text" rows="1" required>{{ input_text }}</textarea>
