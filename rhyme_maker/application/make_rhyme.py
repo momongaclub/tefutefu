@@ -21,7 +21,7 @@ def search_rhyme(query_word, corpus, vowel):
         word_vowel = vowel.word2vowel(word)
         if query_vowel == word_vowel:
             print('word:', word, 'vowel:', word_vowel)
-            rhymes = rhymes + word + '[' + word_vowel + ']' + ','
+            rhymes = rhymes + word + '(' + word_vowel + ')' + ','
     return rhymes
 
 
