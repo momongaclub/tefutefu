@@ -29,7 +29,9 @@
 <nav class="mainmenu">
 	<div class="container">
 		<div class="dropdown">
-			<button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			<!--
+      <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      -->
 			<!-- <a data-toggle="dropdown" href="#">Dropdown trigger</a> -->
 			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				<li><a href="#head" class="active">Hello</a></li>
@@ -51,7 +53,7 @@
 
 				<!-- Site Title, your name, HELLO msg, etc. -->
 				<h1 class="title">rhyme_marker</h1>
-				<h2 class="subtitle">please input a key word</h2>
+				<h2 class="subtitle">version.beta</h2>
 
 				<!-- Short introductory (optional) -->
 				<h3 class="tagline">
@@ -60,28 +62,30 @@
 				</h3>
 
 <!-- 追加箇所 -->
-<div>
-  <p>「 {{query_word}}」で踏んでいるワードは：<br>
-       {{ text }}<br>
-       <!-- TODO forで回せるようにする -->
-     </p>
-   </div>
-   <div>
+  <span>
      <!-- <form action="make_rhymes" method="POST" > -->
      <form action="rhyme" method="POST" >
      {% csrf_token %}
        <textarea class="form-control" id="input_text" name="input_text" rows="1" required>{{ input_text }}</textarea>
-       <button type="submit" name="submit" value="送信" style="background-color: #bcbcff" >
+       <button type="submit" name="submit"  class="btn btn-default btn-lg" value="送信">
         <font size="5">踏む</font>
        </button>
      </form>
+   </span>
+<div>
+  <p><font size="6" class="tagline">「 {{query_word}}」で踏んでいるワードは：<br></font>
+       <font size="4" class="tagline">{{ text }}<br></font>
+       <!-- TODO forで回せるようにする -->
+     </p>
    </div>
-
+ 
 <!--追加箇所end -->
 
 				
 				<!-- Nice place to describe your site in a sentence or two -->
+        <!--
 				<p><a href="/download/" class="btn btn-default btn-lg">Download template now</a></p>
+        -->
 	
 			</div> <!-- /col -->
 		</div> <!-- /row -->
