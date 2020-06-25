@@ -32,6 +32,14 @@ class Vowel():
                 vowel = vowel + w
         return vowel
 
+    def yomi2cons(self, yomi):
+        cons = ''
+        v_list = ['a', 'i', 'u', 'e', 'o', 'A', 'I', 'U', 'E', 'O', 'n']
+        for w in yomi:
+            if w not in v_list:
+                cons = cons + w 
+        return cons
+
 
 def main():
     word = 'プール学校'
