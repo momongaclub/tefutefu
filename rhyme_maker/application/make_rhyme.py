@@ -59,7 +59,6 @@ def word_match_scorer(vowel, query_yomi, word_yomi, vowel_weight=0.2, cons_weigh
     word_match_score = word_len_weight*word_len - (vowel_weight*vowel_score + cons_weight*cons_score)
     scores = [vowel_score, cons_score, word_len, word_match_score]
     return word_match_score, scores
-    # return vowel_score, scores
 
 def cosine_similarity(corpus, query_word, target_word):
     # model.most_similar(positive=['姪', '男性'], negative=['女性'])
