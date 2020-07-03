@@ -6,4 +6,5 @@
 
 ## require
 pip install gensim
+
 pip install pykakasi==1.2
