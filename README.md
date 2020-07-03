@@ -5,4 +5,5 @@
 ## ラップバトル返答文生成システム (名前未定)
 
 ## require
+pip install gensim
 pip install pykakasi==1.2
