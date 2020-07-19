@@ -8,3 +8,7 @@
 pip install gensim
 
 pip install pykakasi==1.2
+
+辞書作成api
+
+https://code.google.com/archive/p/cpi00/downloads
